@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const backend = 'http://localhost:5000/addNewPost';
-    document.querySelector('[type="submit"]').addEventListener('click', (event) => {
-        event.preventDefault();
+    document.querySelector('[type="submit"]').addEventListener('click', (event) => { /*submit button on click makes fetch call.  */
+        event.preventDefault();/*so page doesnt get refreshed */
         fetch(backend, {
             method: 'POST',
             headers: {

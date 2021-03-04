@@ -61,13 +61,13 @@ app.post('/addNewPost', (req, res) => {  /*when there is a new post request,  */
     });
 
     newPost.save().then(() => console.log('Successfully saved a new Post to MongoDB'))
-    res.send('Received post')
+    res.send('Received post') 
 })
 
-app.get('/allPost', (req, res) => {
-    Post.find({}, (err, posts) => {
+app.get('/allPost', (req, res) => { 
+    Post.find({}, (err, posts) => { /*method calling the mongoose model */
         if (err) console.log(err)
-        else res.json(posts)
+        else res.json(posts) /*  respond a json object */
     })
 })
 
