@@ -1,3 +1,6 @@
+/*copied part of the code from app.js*/
+
+
 const dotenv = require('dotenv');
 dotenv.config();
 

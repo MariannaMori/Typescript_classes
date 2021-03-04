@@ -16,13 +16,13 @@ dotenv.config();
 
 app.use(cors())
 
-const localDb = process.env.LOCAL_DB;
-const atlasDb = process.env.ATLAS_DB;
+const localDb = process.env.LOCAL_DB; /***my local mongodb****/
+const atlasDb = process.env.ATLAS_DB; /****from atlas *****/
 
 const mongoose = require('mongoose');
 const { reset } = require('nodemon');
 const db = mongoose.connection;
-mongoose.connect(localDb, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://127.0.0.1:27017/blogs', { useNewUrlParser: true, useUnifiedTopology: true }); //***my local */
 
 db.on('connected', function () {
     console.log('Mongoose default connection open');
@@ -48,13 +48,13 @@ const postSchema = new Schema({
     views: Number
 })
 
-const Post = mongoose.model('Post', postSchema);
+const Post = mongoose.model('Post', postSchema); /* first the document second is the schema of the document */
 
 app.get('/', (req, res) => {
-    res.send('hello world')
+    res.send('hello marianna') /*message sent as respond */
 })
 
-app.post('/addNewPost', (req, res) => {
+app.post('/addNewPost', (req, res) => {  /*when there is a new post request,  */
     const newPost = new Post({
         title: req.body.title,
         content: req.body.content
